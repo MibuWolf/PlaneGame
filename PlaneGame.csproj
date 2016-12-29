@@ -82,6 +82,7 @@
     <Compile Include="Assets\Script\Monster\LogicObject.cs" />
     <Compile Include="Assets\Script\Monster\MonsterBase.cs" />
     <Compile Include="Assets\Script\Monster\NormalMonster.cs" />
+    <Compile Include="Assets\Script\Player\Player.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

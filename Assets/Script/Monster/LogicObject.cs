@@ -30,7 +30,7 @@ public class LogicObject : MonoBehaviour {
             if (transf.position.x < -50 || transf.position.x > 50 ||
                 transf.position.z < -50 || transf.position.z > 50)
             {
-                Dispose();
+              //  Dispose();
             }
 
         }

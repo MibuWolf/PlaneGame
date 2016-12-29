@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour {
 
     // 地图资源
-    public GameObject mapRes;
+    public int mapLevel = 1;
     public int mapCount = 1;
     // 单张地图高
     public float mapHeight;
@@ -21,6 +21,9 @@ public class MapManager : MonoBehaviour {
     private GameObject[] maps;
     // Use this for initialization
     void Start () {
+
+        string url = "Prefab/Map/MapBlock" + mapLevel.ToString();
+        GameObject mapRes = Resources.Load<GameObject>(url);
 
         if (mapCount > 0)
         {

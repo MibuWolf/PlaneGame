@@ -35,5 +35,13 @@ public class NormalMonster : MonsterBase
 
         transform.position = curPos;
 
+        checkValidity();
+
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("get it");
     }
 }

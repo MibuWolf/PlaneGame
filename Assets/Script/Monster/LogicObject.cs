@@ -24,13 +24,14 @@ public class LogicObject : MonoBehaviour {
     protected void checkValidity()
     {
         Transform transf = this.GetComponent<Transform>();
+        Camera camera = Camera.main;
 
         if (transf)
         {
-            if (transf.position.x < -50 || transf.position.x > 50 ||
-                transf.position.z < -50 || transf.position.z > 50)
+            if (transf.position.x < -5 || transf.position.x > 5 ||
+                transf.position.y - camera.transform.position.y < -5 || transf.position.y - camera.transform.position.y > 10)
             {
-              //  Dispose();
+                Dispose();
             }
 
         }
@@ -41,7 +42,7 @@ public class LogicObject : MonoBehaviour {
     // 清理当前脚本
     virtual public void Dispose()
     {
-
+        Destroy( this.gameObject );
     }
 
 }

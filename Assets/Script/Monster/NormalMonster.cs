@@ -11,13 +11,12 @@ public class NormalMonster : MonsterBase
 
     // Use this for initialization
     void Start () {
-        float an = Vector2.Angle(Vector2.right, velocity);
+        float angle = Vector2.Angle(Vector2.right, velocity);
 
         if (velocity.y < 0)
-            an = -an;
+            angle = -angle;
 
-        print(an.ToString());
-        Quaternion q = Quaternion.Euler(0, 0, an - 90);
+        Quaternion q = Quaternion.Euler(0, 0, angle - 90);
         transform.rotation = q;
 	}
 	
@@ -40,8 +39,8 @@ public class NormalMonster : MonsterBase
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("get it");
+        
     }
 }

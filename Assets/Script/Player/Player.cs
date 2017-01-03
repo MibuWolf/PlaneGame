@@ -5,9 +5,9 @@ using UnityEngine;
 public class Player : LogicObject
 {
     // 生命值
-    public int hp;
+    public int hp = 100;
     // 最大生命
-    public int maxHp;
+    public int maxHp = 100;
 
     // 可移动范围
     public float maxX = 2.2f;
@@ -141,13 +141,27 @@ public class Player : LogicObject
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print("get it");
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hp -= 10;
+
+        if (hp > 0)
+        {
+            string url = "Prefab/Effect/Hit";
+            GameObject hitPrefab = Resources.Load<GameObject>(url);
+
+            GameObject hit = Instantiate(hitPrefab);
+
+            HitEffect hitEffect = hit.GetComponent<HitEffect>();
+
+            if (hitEffect)
+                hitEffect.setParent( transform );
+
+        }
+        else
+        {
+              
+        }
     }
 }

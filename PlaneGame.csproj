@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Effect\HitEffect.cs" />
     <Compile Include="Assets\Script\Map\MapManager.cs" />
     <Compile Include="Assets\Script\Monster\LogicObject.cs" />
     <Compile Include="Assets\Script\Monster\MonsterBase.cs" />

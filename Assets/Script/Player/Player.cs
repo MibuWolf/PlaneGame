@@ -144,6 +144,14 @@ public class Player : LogicObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            ButlleBase butlle = collision.gameObject.GetComponent<ButlleBase>();
+
+            if (butlle && butlle.bPlayer)
+                return;
+        }
+
         hp -= 10;
 
         if (hp > 0)
@@ -161,7 +169,15 @@ public class Player : LogicObject
         }
         else
         {
-              
+            string url = "Prefab/Effect/Destoryed";
+            GameObject destoryPrefab = Resources.Load<GameObject>(url);
+
+            GameObject destory = Instantiate(destoryPrefab);
+
+            HitEffect hitEffect = destory.GetComponent<HitEffect>();
+
+            if (hitEffect)
+                hitEffect.setParent(transform);
         }
     }
 }

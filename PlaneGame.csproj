@@ -78,6 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Butlle\ButlleBase.cs" />
+    <Compile Include="Assets\Script\Butlle\ButlleEmitter.cs" />
+    <Compile Include="Assets\Script\Butlle\NormalButtle.cs" />
     <Compile Include="Assets\Script\Effect\HitEffect.cs" />
     <Compile Include="Assets\Script\Map\MapManager.cs" />
     <Compile Include="Assets\Script\Monster\LogicObject.cs" />

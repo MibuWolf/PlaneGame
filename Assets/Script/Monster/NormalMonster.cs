@@ -9,6 +9,8 @@ public class NormalMonster : MonsterBase
     // 速度值
     public float speed = 1.0F;
 
+    private bool bDie = false;
+
     // Use this for initialization
     void Start () {
         float angle = Vector2.Angle(Vector2.right, velocity);
@@ -41,6 +43,34 @@ public class NormalMonster : MonsterBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Bullet" && !bDie)
+        {
+            bDie = true;
+
+            ButlleBase butlle = collision.gameObject.GetComponent<ButlleBase>();
+
+            if (butlle && butlle.bPlayer)
+            {
+                string url = "Prefab/Effect/Destoryed";
+                GameObject destoryPrefab = Resources.Load<GameObject>(url);
+
+                GameObject destory = Instantiate(destoryPrefab);
+
+                HitEffect hitEffect = destory.GetComponent<HitEffect>();
+
+                if (hitEffect)
+                    hitEffect.setParent(transform);
+
+                StartCoroutine(waitAndDestory(0.25f));
+            }
+        } 
         
+    }
+
+    private IEnumerator waitAndDestory( float time )
+    {
+        yield return new WaitForSeconds(time);
+
+        Destroy(gameObject);
     }
 }

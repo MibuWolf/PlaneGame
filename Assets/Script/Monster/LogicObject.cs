@@ -19,6 +19,11 @@ public class LogicObject : MonoBehaviour {
 
     }
 
+    virtual public void OnHit(int damage)
+    {
+
+    }
+
 
     // 每帧监测有效性 如果超出地图区域范围则直接销毁
     protected void checkValidity()

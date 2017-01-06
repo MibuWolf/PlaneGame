@@ -41,30 +41,25 @@ public class NormalMonster : MonsterBase
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // 怪物被击中
+    override public void OnHit(int damage)
     {
-        if (collision.gameObject.tag == "Bullet" && !bDie)
+        if ( !bDie )
         {
             bDie = true;
 
-            ButlleBase butlle = collision.gameObject.GetComponent<ButlleBase>();
+            string url = "Prefab/Effect/Destoryed";
+            GameObject destoryPrefab = Resources.Load<GameObject>(url);
 
-            if (butlle && butlle.bPlayer)
-            {
-                string url = "Prefab/Effect/Destoryed";
-                GameObject destoryPrefab = Resources.Load<GameObject>(url);
+            GameObject destory = Instantiate(destoryPrefab);
 
-                GameObject destory = Instantiate(destoryPrefab);
+            HitEffect hitEffect = destory.GetComponent<HitEffect>();
 
-                HitEffect hitEffect = destory.GetComponent<HitEffect>();
+            if (hitEffect)
+                hitEffect.setParent(transform);
 
-                if (hitEffect)
-                    hitEffect.setParent(transform);
-
-                StartCoroutine(waitAndDestory(0.25f));
-            }
-        } 
-        
+            StartCoroutine(waitAndDestory(0.25f));
+        }
     }
 
     private IEnumerator waitAndDestory( float time )

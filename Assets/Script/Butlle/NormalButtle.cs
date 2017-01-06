@@ -33,19 +33,51 @@ public class NormalButtle : ButlleBase
         Vector3 pos = transform.localPosition;
         pos.x += speed * dirX;
         pos.y += speed * dirY;
+ 
+        Quaternion qR = transform.parent.localRotation;
 
         transform.localPosition = pos;
+        transform.localRotation = qR;
     }
 
 
     // 监测位置区域
     private void checkPostion()
     {
-        Vector3 pos = transform.localPosition;
+        Vector3 pos = transform.position;
 
-        if (pos.x < -3 || pos.x > 3 || pos.y > 10 || pos.y < -5)
+        Vector3 cameraPos = Camera.main.transform.position;
+
+        if (( pos.x - cameraPos.x) < -3 || (pos.x - cameraPos.x) > 3 || (pos.y - cameraPos.y) > 10 || (pos.y - cameraPos.y) < -5)
         {
             Destroy(gameObject);
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 玩家子弹击中怪物
+        if (other.gameObject.tag == "Monster")
+        {
+            if (bPlayer)
+            {
+                NormalMonster monster = other.gameObject.GetComponent<NormalMonster>();
+                monster.OnHit(damage);
+                Destroy(gameObject);
+            }
+        }
+
+        // 玩家被怪物击中
+        if (other.gameObject.tag == "Player")
+        {
+            // 玩家子弹击中怪物
+            if (!bPlayer)
+            {
+                Player player = other.gameObject.GetComponent<Player>();
+                player.OnHit(damage);
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -48,10 +48,20 @@ public class ButlleEmitter : MonoBehaviour {
 
 
     // 生成一个新的普通子弹
-    private void createNormalButlle()
+   virtual protected void createNormalButlle()
     {
-        GameObject butlle = Instantiate<GameObject>(Resources.Load("Prefab/Bullet/NormalBullet") as GameObject);
 
+        Vector3 pos = transform.position;
+
+        Vector3 cameraPos = Camera.main.transform.position;
+
+        if ((pos.x - cameraPos.x) < -3 || (pos.x - cameraPos.x) > 3 || (pos.y - cameraPos.y) > 10 || (pos.y - cameraPos.y) < -5)
+        {
+            return;
+        }
+
+        GameObject butlle = Instantiate<GameObject>(Resources.Load("Prefab/Bullet/NormalBullet") as GameObject);
+        butlle.GetComponent<NormalButtle>().bPlayer = bPlayer;
         butlle.transform.parent = transform;
         butlle.transform.localPosition = transform.localPosition;
 

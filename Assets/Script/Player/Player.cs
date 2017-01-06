@@ -142,17 +142,10 @@ public class Player : LogicObject
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // 玩家被击中
+    override public void OnHit( int damage )
     {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            ButlleBase butlle = collision.gameObject.GetComponent<ButlleBase>();
-
-            if (butlle && butlle.bPlayer)
-                return;
-        }
-
-        hp -= 10;
+        hp -= damage;
 
         if (hp > 0)
         {

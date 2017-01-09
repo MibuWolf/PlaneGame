@@ -34,10 +34,10 @@ public class NormalButtle : ButlleBase
         pos.x += speed * dirX;
         pos.y += speed * dirY;
  
-        Quaternion qR = transform.parent.localRotation;
+        Quaternion qR = transform.parent.rotation;
 
         transform.localPosition = pos;
-        transform.localRotation = qR;
+        transform.rotation = qR;
     }
 
 

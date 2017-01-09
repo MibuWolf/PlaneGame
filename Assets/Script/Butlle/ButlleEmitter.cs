@@ -13,10 +13,12 @@ public class ButlleEmitter : MonoBehaviour {
     // 产生新子弹的剩余时间
     private float time = 0.0f;
 
-    // 产生子弹类型
+    // 产生子弹类型(普通/散弹/。。。。)
     public enum ButlleType{ normal }
     public ButlleType butlleType = ButlleType.normal;
 
+    // 子弹材质类型
+    public int type = 1;
 
     // Use this for initialization
     void Start () {
@@ -60,10 +62,10 @@ public class ButlleEmitter : MonoBehaviour {
             return;
         }
 
-        GameObject butlle = Instantiate<GameObject>(Resources.Load("Prefab/Bullet/NormalBullet") as GameObject);
+        GameObject butlle = Instantiate<GameObject>(Resources.Load("Prefab/Bullet/NormalBullet"+ type.ToString()) as GameObject);
         butlle.GetComponent<NormalButtle>().bPlayer = bPlayer;
         butlle.transform.parent = transform;
         butlle.transform.localPosition = transform.localPosition;
-
+        butlle.transform.position = transform.position;
     }
 }

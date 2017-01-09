@@ -46,19 +46,36 @@ public class NormalMonster : MonsterBase
     {
         if ( !bDie )
         {
-            bDie = true;
+            hp -= damage;
 
-            string url = "Prefab/Effect/Destoryed";
-            GameObject destoryPrefab = Resources.Load<GameObject>(url);
+            if (hp <= 0)
+            {
+                bDie = true;
 
-            GameObject destory = Instantiate(destoryPrefab);
+                string url = "Prefab/Effect/Destoryed";
+                GameObject destoryPrefab = Resources.Load<GameObject>(url);
 
-            HitEffect hitEffect = destory.GetComponent<HitEffect>();
+                GameObject destory = Instantiate(destoryPrefab);
 
-            if (hitEffect)
-                hitEffect.setParent(transform);
+                HitEffect hitEffect = destory.GetComponent<HitEffect>();
 
-            StartCoroutine(waitAndDestory(0.25f));
+                if (hitEffect)
+                    hitEffect.setParent(transform);
+
+                StartCoroutine(waitAndDestory(0.25f));
+            }
+            else
+            {
+                string url = "Prefab/Effect/Hit";
+                GameObject hitPrefab = Resources.Load<GameObject>(url);
+
+                GameObject hit = Instantiate(hitPrefab);
+
+                HitEffect hitEffect = hit.GetComponent<HitEffect>();
+
+                if (hitEffect)
+                    hitEffect.setParent(transform);
+            }
         }
     }
 

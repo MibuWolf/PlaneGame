@@ -30,13 +30,13 @@ public class NormalButtle : ButlleBase
     // 移动子弹
     private void move()
     {
-        Vector3 pos = transform.localPosition;
+        Vector3 pos = transform.position;
         pos.x += speed * dirX;
         pos.y += speed * dirY;
  
         Quaternion qR = transform.parent.rotation;
 
-        transform.localPosition = pos;
+        transform.position = pos;
         transform.rotation = qR;
     }
 

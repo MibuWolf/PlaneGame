@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/map.unity
+- path: "D:/Code/\u5168-\u6C11-\u98DE-\u673A-\u5927-\u6218/NewPlane/Assets/sence/MainUI.unity"
   isLoaded: 1
   isActive: 1

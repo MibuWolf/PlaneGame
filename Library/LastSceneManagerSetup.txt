@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "D:/Code/\u5168-\u6C11-\u98DE-\u673A-\u5927-\u6218/NewPlane/Assets/sence/MainUI.unity"
+- path: D:/Code/MyGame/FPS DIY DOME/FPS DIY DOME/Assets/FPS DIY DOME.unity
   isLoaded: 1
   isActive: 1
